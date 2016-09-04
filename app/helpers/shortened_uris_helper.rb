@@ -1,0 +1,2 @@
+module ShortenedUrisHelper
+end
