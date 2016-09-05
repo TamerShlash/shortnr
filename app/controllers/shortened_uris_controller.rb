@@ -1,5 +1,7 @@
 class ShortenedUrisController < ApplicationController
   def show
+    shortened_uri = ShortenedUri.fetch(params[:key])
+    redirect_to shortened_uri.original_uri, status: 302
   end
 
   def new
