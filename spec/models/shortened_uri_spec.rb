@@ -186,5 +186,12 @@ RSpec.describe ShortenedUri, type: :model do
       ShortenedUri.persist_new_records
       expect(REDIS.hgetall(ShortenedUri::QUEUE_REDIS_KEY).keys).to be_blank
     end
+
+    it 'does nothing if there are no new records' do
+      REDIS.del(ShortenedUri::QUEUE_REDIS_KEY)
+      expect(ShortenedUri).not_to receive(:import)
+      expect(REDIS).not_to receive(:hdel)
+      ShortenedUri.persist_new_records
+    end
   end
 end

@@ -24,6 +24,7 @@ class ShortenedUri < ApplicationRecord
     def persist_new_records
       columns = [:key, :original_uri]
       new_records = REDIS.hgetall(QUEUE_REDIS_KEY)
+      return if new_records.blank?
       ShortenedUri.import(columns, new_records.to_a, validate: false)
       REDIS.hdel(QUEUE_REDIS_KEY, new_records.keys)
     end
