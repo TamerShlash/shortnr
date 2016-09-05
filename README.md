@@ -1,24 +1,28 @@
-# README
+# Shortnr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a very simple URL shortening service.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+- Ruby 2.3.1
+- Postgresql database
+- REDIS
 
-* System dependencies
+## Environment Variables
 
-* Configuration
+- `REDIS_URL` (required): URL of the REDIS database.
+- `KEY_SIZE` (optional - defaults to 4): size, in bytes, of the short URL key.
 
-* Database creation
+## Services
 
-* Database initialization
+You must schedule a servie to run the following rake tasks in a frequent manner (every 1-10 minutes).
 
-* How to run the test suite
+    rake shortened_uris:persist_new_records
 
-* Services (job queues, cache servers, search engines, etc.)
+If you are on Herkou, you can use the [https://devcenter.heroku.com/articles/scheduler](Scheduler addon)
 
-* Deployment instructions
+## Testing
 
-* ...
+Running the tests is pretty straightforward using RSpec, just `cd` to the project directory and run:
+
+    rspec
