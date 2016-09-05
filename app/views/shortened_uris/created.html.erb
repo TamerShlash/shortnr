@@ -1,8 +1,19 @@
-<p>Your short URL has been created successfully!</p>
+<div class="alert alert-success">
+  Your short URL has been created successfully!
+</div>
 
-<input type="text"
-       autofocus="autofocus"
-       onfocus="this.select();"
-       name="short_uri"
-       value=<%= short_uri_for(@shortened_uri) %>
->
+<div class="form-group">
+  <input type="text"
+         class="form-control primary-textbox"
+         autofocus="autofocus" onfocus="this.select();"
+         readonly
+         value=<%= short_uri_for(@shortened_uri) %>
+  >
+</div>
+<p>
+  Click <span class="label label-default">CTRL + C</span> to copy it!
+</p>
+
+<div>
+  or <a class="btn btn-primary" href="/">Create a new short URL!</a>
+</div>

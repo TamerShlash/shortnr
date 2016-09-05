@@ -1,6 +1,7 @@
-<%= form_for(@shortened_uri, url: root_path) do |f| %>
+<%= form_for(@shortened_uri, url: root_path, html: {class: 'form-inline'}) do |f| %>
   <% if @shortened_uri.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-danger error-messages" role="alert">
+      Could not create a short URL due to the following errors:
       <ul>
       <% @shortened_uri.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -9,8 +10,9 @@
     </div>
   <% end %>
 
-  <div>
-    <%= f.text_field :original_uri, id: 'original_uri', placeholder: 'Enter your URL here' %>
-    <%= f.submit id: 'submit', value: 'and shorten it!' %>
+  <div class="form-group strech-input">
+    <%= f.label :original_uri, class: 'sr-only' %>
+    <%= f.text_field :original_uri, id: 'original_uri', class: 'form-control', placeholder: 'Enter your URL here', autofocus: 'autofocus' %>
   </div>
+  <%= f.submit id: 'submit', class: 'btn btn-default', value: 'and shorten it!' %>
 <% end %>
