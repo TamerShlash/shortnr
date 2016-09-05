@@ -9,10 +9,10 @@ class ShortenedUrisController < ApplicationController
   def create
     @shortened_uri = ShortenedUri.new(shortened_uri_params)
 
-    if @shortened_uri.save
-      redirect_to @shortened_uri, notice: 'Shortened uri was successfully created.'
+    if @shortened_uri.write
+      render :created, status: 200
     else
-      render :new
+      render :new, status: 400
     end
   end
 

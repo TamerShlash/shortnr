@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root to: 'shortened_uris#new'
   post '/', to: 'shortened_uris#create'
 
-  get '/:key', to: 'shortened_uris#show', constraints: { key: /[\w-]{6}/ }
+  get '/:key', to: 'shortened_uris#show', constraints: { key: KEY_CONFIG[:regexp] }
 end
