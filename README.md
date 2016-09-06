@@ -19,7 +19,7 @@ You must schedule a servie to run the following rake tasks in a frequent manner 
 
     rake shortened_uris:persist_new_records
 
-If you are on Herkou, you can use the [https://devcenter.heroku.com/articles/scheduler](Scheduler addon)
+If you are on Herkou, you can use the [Scheduler addon](https://devcenter.heroku.com/articles/scheduler).
 
 ## Testing
 
